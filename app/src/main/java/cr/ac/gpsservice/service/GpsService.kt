@@ -40,22 +40,13 @@ class GpsService : IntentService("GpsService") {
         getLocation()
     }
 
-
-    /*
-     * Inicializa los atributos locationCallback y fusedLocationClient
-     * Coloca un intervalo de actualización de 1000 y una prioridad de PRIORITY_HIGH_ACCURACY
-     * Recibe ubicación de gps mediante un onLocationResult
-     * Envía un broadcast con una instancia de localización y la acción gps (cr.ac.gpsservice.GPS.EVENT
-     * Guarda la localización en la BD)
-     *
-     */
     @SuppressLint("MissingPermission")
     fun getLocation(){
 
         fusedLocationClient= LocationServices.getFusedLocationProviderClient(this)
 
         val locationRequest=LocationRequest.create()
-        locationRequest.interval = 1000
+        locationRequest.interval = 5000
         locationRequest.fastestInterval = 5000
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
 
